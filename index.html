@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <p>Where in the world?</p>
+      <button class="darkModeButton">
+        <img src="./Moon_symbol_decrescent.svg" alt="" /> Dark Mode
+      </button>
+    </nav>
+    <main>
+      <div class="search">
+        <div class="search--container">
+          <img src="./search-outline.svg" alt="" class="search--img" />
+          <input
+            type="text"
+            placeholder="Search for a country..."
+            class="search--input"
+            id="search--input"
+          />
+        </div>
+
+        <div class="filter--region" id="search--region">
+          <button onclick="showAfrica()"><p>Africa</p></button> <br />
+          <button onclick="showAmerica()"><p>America</p></button> <br />
+          <button onclick="showAsia()"><p>Asia</p></button> <br />
+          <button onclick="showEurope()"><p>Europe</p></button> <br />
+          <button onclick="showOceania()"><p>Oceania</p></button>
+        </div>
+        <button class="filter--button" id="filter--button">
+          Filter By Region
+        </button>
+      </div>
+
+      <div class="countries" id="countries"></div>
+      <div class="country--dev filterHide" id="country--dev"></div>
+    </main>
+
+    <script src="./script.js"></script>
+    <script src="./data.json"></script>
+  </body>
+</html>
