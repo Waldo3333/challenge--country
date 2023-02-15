@@ -16790,7 +16790,42 @@ const monde = [
     independent: true,
   },
 ];
+//-------------------------ETAPE---------------------------------------dark mode/white mode  ||
+const darkModeButton = document.getElementById("darkMode");
+let elementDark = document.getElementsByClassName("mode");
+let modeAffich = "dark";
 
+darkModeButton.addEventListener("click", function () {
+  for (let i = 0; i < elementDark.length; i++) {
+    if (elementDark[i].classList.contains("dark--background")) {
+      elementDark[i].classList.remove("dark--background");
+      elementDark[i].classList.add("white--background");
+      modeAffich = "white";
+    } else if (elementDark[i].classList.contains("white--background")) {
+      elementDark[i].classList.add("dark--background");
+      elementDark[i].classList.remove("white--background");
+      modeAffich = "dark";
+    }
+    if (elementDark[i].classList.contains("dark--nav")) {
+      elementDark[i].classList.remove("dark--nav");
+      elementDark[i].classList.add("white--nav");
+      modeAffich = "white";
+    } else if (elementDark[i].classList.contains("white--nav")) {
+      elementDark[i].classList.add("dark--nav");
+      elementDark[i].classList.remove("white--nav");
+      modeAffich = "dark";
+    }
+    if (elementDark[i].classList.contains("dark--text")) {
+      elementDark[i].classList.remove("dark--text");
+      elementDark[i].classList.add("white--text");
+      modeAffich = "white";
+    } else if (elementDark[i].classList.contains("white--text")) {
+      elementDark[i].classList.add("dark--text");
+      elementDark[i].classList.remove("white--text");
+      modeAffich = "dark";
+    }
+  }
+});
 //--------------------------------ETAPE-----------------affichage des pays à l'ouverture de la page
 
 let displayCountry = document.getElementById("countries");
@@ -16798,7 +16833,11 @@ let content = "";
 
 for (let i = 0; i < monde.length; i++) {
   content += `
-       <div class="${monde[i].region} ${monde[i].name}  country" id="country--${monde[i].name}">
+       <div class="${
+         monde[i].region
+       } country dark--nav dark--text mode" id="country--${
+    monde[i].name
+  }" name="${monde[i].name.replaceAll(" ", "-")}(""  >
         <img src="${monde[i].flag}" alt=""></img>
         <h2>${monde[i].name}</h2>
         <p>Popolation: ${monde[i].population} </p>
@@ -16813,6 +16852,7 @@ displayCountry.innerHTML = content;
 
 let regionButton = document.getElementById("filter--button");
 let regionSearch = document.getElementById("search--region");
+const barreRecherche = document.getElementById("search--bar");
 
 //--------------------------------------------------------- afficher le menu
 
@@ -16918,6 +16958,12 @@ array.forEach((element, index) => {
   element.addEventListener("click", () => {
     paysIndex = `${index}`;
 
+    //----------------------------------------------------cacher les barres de recherche
+
+    //let regionSearch = document.getElementById("search--region");
+
+    barreRecherche.style.display = "none";
+
     //----------------------------------------------------choper toutes les langues & currencies
 
     let langues = monde[paysIndex].languages;
@@ -16938,19 +16984,54 @@ array.forEach((element, index) => {
     //---------------------------------------------------------modifier le HTML de l'affichage
 
     contentInfo = `
-    <button onclick="retour()" class="back--button"><img src="./27324.svg" alt="">Back</button>
-        <div class="country--dev--container" >
-          
-          <img class="dev--img" src="${monde[paysIndex].flag}" alt=""></img>
-          <h2>${monde[paysIndex].name}</h2>
-          <p>Native Name: ${monde[paysIndex].nativeName}</p>
-          <p>Popolation: ${monde[paysIndex].population} </p>
-          <p>Region: ${monde[paysIndex].region}</p>
-          <p>Capital: ${monde[paysIndex].capital}</p>
-          <p>Top Level Domain: ${monde[paysIndex].topLevelDomain} </p>
-          <p> Currencies: ${currenciesNoms.join(", ")}</p>
-          <p>Languages: ${languesNoms.join(", ")} </p>
-        </div>`;
+    <button onclick="retour()" class="back--button ${modeAffich}--nav ${modeAffich}--text mode"><img src="./27324.svg" alt="">Back</button>
+      <div class="country--dev--container ${modeAffich}--background ${modeAffich}--text mode" >
+        
+        <img class="dev--img" src="${monde[paysIndex].flag}" alt=""></img>
+        <div class="dev">
+            <div class="dev--title">
+              <h2>${monde[paysIndex].name}</h2>
+            </div>
+            <div class="dev--all">
+              <div class="dev--left">
+                <div class="online"> <p class="dev--subtitle">Native Name: </p><p>${
+                  monde[paysIndex].nativeName
+                }</p></div>
+                <div class="online"><p class="dev--subtitle">Popolation:</p><p>${
+                  monde[paysIndex].population
+                } </p></div>
+                <div class="online"><p class="dev--subtitle">Region:</p><p>${
+                  monde[paysIndex].region
+                }</p></div>
+                <div class="online"><p class="dev--subtitle">Sub Region: </p><p>${
+                  monde[paysIndex].subregion
+                }</p></div>
+                <div class="online"><p class="dev--subtitle">Capital:</p><p>${
+                  monde[paysIndex].capital
+                }</p></div>
+              </div>
+              <div class="dev--right">
+                <div class="online"><p class="dev--subtitle">Top Level Domain:</p><p>${
+                  monde[paysIndex].topLevelDomain
+                } </p></div>
+                <div class="online"><p class="dev--subtitle">Currencies:</p><p>${currenciesNoms.join(
+                  ", "
+                )}</p></div>
+                <div class="online"><p class="dev--subtitle">Languages:</p><p>${languesNoms.join(
+                  ", "
+                )} </p></div>
+              </div>
+            </div>
+            <div class="dev--border">
+               <p class="dev--subtitle "> Border Countries:</p><p>${
+                 monde[paysIndex].borders
+               } </p>
+               
+            </div>
+        
+         </div>
+      </div>
+`;
 
     paysInfo.innerHTML = contentInfo;
 
@@ -16969,23 +17050,24 @@ function retour() {
   displayCountry.classList.remove("filterHide");
   paysInfo.classList.remove("filterShow");
   paysInfo.classList.add("filterHide");
+  barreRecherche.style.display = "block";
 }
 
 //-------------------------------------ETAPE--------------------------------------------rechercher un pays
-
 let recherche = document.getElementById("search--input");
 let rechercheValeur = "";
+recherche.addEventListener("keyup", e => {
+  let rechercheValeur = e.target.value.toLowerCase();
 
-for (i = 0; i < monde.length; i++) {
-  let paysSearch = monde[i].name;
-  recherche.addEventListener("keyup", e => {
-    rechercheValeur = e.target.value;
-    if (paysSearch.toLowerCase() === rechercheValeur.toLowerCase()) {
-      console.log(paysSearch);
-
-      if (paysSearch.toLocaleLowerCase() === pays[i].classList()) {
-        console.log("ca pourait marcher");
-      }
+  for (let i = 0; i < pays.length; i++) {
+    console.log(rechercheValeur);
+    let nomPays = monde[i].name.toLowerCase();
+    if (nomPays.startsWith(rechercheValeur)) {
+      pays[i].classList.add("filterShow");
+      pays[i].classList.remove("filterHide");
+    } else {
+      pays[i].classList.add("filterHide");
+      pays[i].classList.remove("filterShow");
     }
-  });
-}
+  }
+});

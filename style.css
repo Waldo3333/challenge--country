@@ -2,7 +2,29 @@ body {
   width: 100vw;
   font-family: "Nunito Sans", sans-serif;
   margin: 0;
+}
+
+.dark--nav {
+  background: hsl(288deg 7% 29%);
+}
+.white--nav {
+  background: hsl(0, 0%, 100%);
+}
+
+.dark--background {
   background-color: hsl(207, 26%, 17%);
+}
+
+.white--background {
+  background-color: rgb(238, 236, 236);
+}
+
+.dark--text {
+  color: white;
+}
+
+.white--text {
+  color: black;
 }
 
 img {
@@ -12,8 +34,6 @@ nav {
   display: flex;
   justify-content: space-around;
   height: 60px;
-  background: hsl(288deg 7% 29%);
-  color: white;
   font-weight: 800;
   text-align: center;
   align-items: center;
@@ -22,7 +42,6 @@ nav {
 .darkModeButton {
   background: none;
   border: none;
-  color: white;
   cursor: pointer;
 }
 .darkModeButton:hover {
@@ -30,10 +49,10 @@ nav {
 }
 
 .search {
+  display: block;
   width: 350px;
   height: 50px;
   margin: 40px 0 0 100px;
-  background-color: hsl(288deg 7% 29%);
   border-radius: 10px;
   box-shadow: 0px 1px 10px 1px #0000007d;
 }
@@ -44,11 +63,7 @@ nav {
   width: 250px;
   height: 40px;
   margin-left: 40px;
-  color: white;
   letter-spacing: 2px;
-}
-.search--input::placeholder {
-  color: white;
 }
 
 .search--container {
@@ -76,9 +91,7 @@ nav {
   z-index: 1;
   border-radius: 10px;
   font-weight: 600;
-  color: white;
   padding: 2px 0 2px 20px;
-  background-color: hsl(288deg 7% 29%);
   box-shadow: 0px 1px 10px 1px #0000007d;
 }
 .filter--region button {
@@ -86,7 +99,6 @@ nav {
   width: max-content;
   background: none;
   cursor: pointer;
-  color: white;
   height: max-content;
   margin: 0;
 }
@@ -95,7 +107,6 @@ nav {
   width: max-content;
   background: none;
   cursor: pointer;
-  color: white;
   height: max-content;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -121,8 +132,6 @@ nav {
   height: 50px;
   border-radius: 10px;
   margin-top: 50px;
-  background-color: hsl(288deg 7% 29%);
-  color: white;
   border: none;
   cursor: pointer;
   box-shadow: 0px 1px 10px 1px #0000007d;
@@ -136,12 +145,10 @@ nav {
 
 .country {
   margin: auto;
-  background-color: hsl(288deg 7% 29%);
   border-radius: 10px;
   width: 300px;
   height: 420px;
   margin-top: 30px;
-  color: white;
   text-align: left;
   cursor: pointer;
   padding-bottom: 20px;
@@ -156,44 +163,75 @@ nav {
 
 .country img {
   border-radius: 10px 10px 0 0;
-  height: 200px;
+  height: max-content;
 }
 .country--dev {
   margin: auto;
 
   border-radius: 10px;
-  width: 300px;
-  margin-top: 130px;
-  color: white;
+  width: 100vw;
+  margin-top: 40px;
   text-align: left;
 }
 
 .country--dev--container {
-  background-color: hsl(288deg 7% 29%);
-  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 0px;
   padding-bottom: 30px;
-  box-shadow: 0px 1px 10px 1px #0000007d;
 }
 .country--dev h2 {
   margin-left: 20px;
 }
 .country--dev p {
-  margin-left: 20px;
+  margin-left: 5px;
 }
 
 .country--dev img {
-  border-radius: 10px 10px 0 0;
-  width: 300px;
+}
+
+.dev {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+
+.dev--subtitle {
+  font-weight: 600;
+}
+
+.online {
+  display: flex;
+}
+
+.dev--right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 30px;
+}
+.dev--left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.dev--all {
+  display: flex;
+}
+.dev--img {
+  width: 50vw;
+  height: 450px;
 }
 
 .back--button {
   width: 100px;
   height: 30px;
-  background-color: hsl(288deg 7% 29%);
-  color: white;
   border: none;
   cursor: pointer;
   margin-bottom: 20px;
+  margin-left: 100px;
   box-shadow: 0px 1px 10px 1px #0000007d;
 }
 .back--button img {
@@ -205,10 +243,9 @@ nav {
 
 @media (max-width: 720px) {
   body {
-    width: 375px;
+    width: 380px;
     font-family: "Nunito Sans", sans-serif;
     margin: 0;
-    background-color: hsl(207, 26%, 17%);
   }
 
   img {
@@ -218,8 +255,6 @@ nav {
     display: flex;
     justify-content: space-around;
     height: 100px;
-    background: hsl(288deg 7% 29%);
-    color: white;
     font-weight: 800;
     text-align: center;
     align-items: center;
@@ -228,7 +263,6 @@ nav {
   .darkModeButton {
     background: none;
     border: none;
-    color: white;
     cursor: pointer;
   }
   .darkModeButton:hover {
@@ -236,10 +270,10 @@ nav {
   }
 
   .search {
+    display: block;
     width: 350px;
     height: 50px;
     margin: 10px auto;
-    background-color: hsl(288deg 7% 29%);
     border-radius: 10px;
     box-shadow: 0px 1px 10px 1px #0000007d;
   }
@@ -250,11 +284,7 @@ nav {
     width: 250px;
     height: 40px;
     margin-left: 40px;
-    color: white;
     letter-spacing: 2px;
-  }
-  .search--input::placeholder {
-    color: white;
   }
 
   .search--container {
@@ -281,9 +311,7 @@ nav {
     z-index: 1;
     border-radius: 10px;
     font-weight: 600;
-    color: white;
     padding: 2px 0 2px 20px;
-    background-color: hsl(288deg 7% 29%);
     box-shadow: 0px 1px 10px 1px #0000007d;
   }
   .filter--region button {
@@ -291,7 +319,6 @@ nav {
     width: max-content;
     background: none;
     cursor: pointer;
-    color: white;
     height: max-content;
     margin: 0;
   }
@@ -300,10 +327,36 @@ nav {
     width: max-content;
     background: none;
     cursor: pointer;
-    color: white;
     height: max-content;
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+  .dev--all {
+    display: flex;
+    flex-direction: column;
+  }
+  .dev {
+    margin-left: 0px;
+  }
+
+  .dev--subtitle {
+    font-weight: 600;
+  }
+
+  .online {
+    display: flex;
+  }
+
+  .dev--right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 0px;
+  }
+  .dev--left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   .countries {
@@ -325,8 +378,6 @@ nav {
     height: 50px;
     border-radius: 10px;
     margin-top: 50px;
-    background-color: hsl(288deg 7% 29%);
-    color: white;
     border: none;
     cursor: pointer;
     box-shadow: 0px 1px 10px 1px #0000007d;
@@ -340,11 +391,9 @@ nav {
 
   .country {
     margin: auto;
-    background-color: hsl(288deg 7% 29%);
     border-radius: 10px;
     width: 300px;
     margin-top: 30px;
-    color: white;
     text-align: left;
     cursor: pointer;
     padding-bottom: 20px;
@@ -366,12 +415,16 @@ nav {
     border-radius: 10px;
     width: 300px;
     margin-top: 130px;
-    color: white;
     text-align: left;
   }
 
+  .dev--img {
+    height: 190px;
+  }
+
   .country--dev--container {
-    background-color: hsl(288deg 7% 29%);
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
     padding-bottom: 30px;
     box-shadow: 0px 1px 10px 1px #0000007d;
@@ -380,7 +433,7 @@ nav {
     margin-left: 20px;
   }
   .country--dev p {
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
   .country--dev img {
@@ -391,8 +444,6 @@ nav {
   .back--button {
     width: 100px;
     height: 30px;
-    background-color: hsl(288deg 7% 29%);
-    color: white;
     border: none;
     cursor: pointer;
     margin-bottom: 20px;
